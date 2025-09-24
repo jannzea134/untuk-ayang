@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kamu sayang aku tak?</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #ffe6f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #ff4da6;
+      margin-bottom: 30px;
+    }
+    button {
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .yes {
+      background: #ff80bf;
+      color: white;
+    }
+    .no {
+      background: #ffcc99;
+      color: #333;
+    }
+    .hidden {
+      display: none;
+    }
+    .message {
+      font-size: 22px;
+      color: #ff3399;
+      margin-top: 20px;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="main-title">💌 Kamu pilih suka mana? aku atau tiramisu</h1>
+
+    <div id="step1">
+      <button class="yes" id="yes1">😼 Kamu ayang</button>
+      <button class="no" id="no1">🍰 Tiramisu</button>
+    </div>
+
+    <div id="step2" class="hidden">
+      <button class="yes" id="yes2">😼 Sayang banget</button>
+      <button class="no" id="no2">😢 tak sayang</button>
+    </div>
+
+    <div id="final" class="hidden">
+      <button class="yes" id="open">💌 Dibuka yaa</button>
+    </div>
+
+    <div id="message" class="message hidden"></div>
+  </div>
+
+  <script>
+    let no1 = document.getElementById("no1");
+    let yes1 = document.getElementById("yes1");
+    let step1 = document.getElementById("step1");
+    let step2 = document.getElementById("step2");
+    let no2 = document.getElementById("no2");
+    let yes2 = document.getElementById("yes2");
+    let final = document.getElementById("final");
+    let message = document.getElementById("message");
+    let mainTitle = document.getElementById("main-title");
+
+    let no1Clicks = 0;
+    let no2Clicks = 0;
+
+    no1.addEventListener("click", () => {
+      no1Clicks++;
+      yes1.style.fontSize = (18 + no1Clicks * 10) + "px";
+      if (no1Clicks >= 3) {
+        no1.style.display = "none";
+      }
+    });
+
+    yes1.addEventListener("click", () => {
+      step1.classList.add("hidden");
+      message.classList.remove("hidden");
+      message.innerText = "AKU JUGA SUKA KAMU BANYAK BANYAK 💕💞✨";
+
+      // ganti judul atas jadi emot kucing
+      mainTitle.innerText = "🐱";
+
+      setTimeout(() => {
+        message.classList.add("hidden");
+        step2.classList.remove("hidden");
+        // ganti judul step2
+        mainTitle.innerText = "💌 Kamu sayang aku tak?";
+      }, 2000);
+    });
+
+    no2.addEventListener("click", () => {
+      no2Clicks++;
+      yes2.style.fontSize = (18 + no2Clicks * 10) + "px";
+      if (no2Clicks >= 3) {
+        no2.style.display = "none";
+      }
+    });
+
+    yes2.addEventListener("click", () => {
+      step2.classList.add("hidden");
+      message.classList.remove("hidden");
+      message.innerText = "AKUUU SAYANGGGGGGGG KAMUUUUUUUUUUUU JUGAAAAAAAAAAA 💖💘";
+
+      // ganti judul atas jadi emot kucing
+      mainTitle.innerText = "🐱";
+
+      setTimeout(() => {
+        message.classList.add("hidden");
+        final.classList.remove("hidden");
+      }, 2000);
+    });
+
+    document.getElementById("open").addEventListener("click", () => {
+      final.classList.add("hidden");
+      message.classList.remove("hidden");
+      message.innerText = `hewo ayang, maafin aku yak kemarin aku marah marah 🥲 dan maaf juga aku lupa kasih tau kamu maksud ku tuh kan aku emang iyain pas kamu bilang bakal sibuk cuman tolong kamu iyain soal yang aku kasih ke kamu yang waktu sendiri buat kamu gitu, karena kalau kamu gak iyain aku jadi suka lupa kamu sibuk aku juga jadi gak sabaran dan aku minta maaf aku masih belajar buat itu semua, dan aku bener bener takut nyakitin kamu kalau kamu terus sama aku, aku selalu ingetin bahkan maksa kamu pergi kan? karena aku takut semakin jauh kamu deket aku semakin besar harapan aku dan aku jadi takut kehilangan bahkan aku jadi nyalahin kamu padahal kamu gak salah, jadi..... maafin aku lagi ya.... kalau capek udahan aja kita bisa temenan normal kok dan abaikan perasaan aku, i still love u and always love u ❤️`;
+    });
+  </script>
+</body>
+</html>
